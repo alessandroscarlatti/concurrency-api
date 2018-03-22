@@ -1,5 +1,6 @@
 package com.scarlatti.taskLauncher;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
  */
 public class TaskLauncherBuilder {
     private List<Task> tasks;
+    private Color colorOne;
+    private Color colorTwo;
 
     TaskLauncherBuilder() {
         tasks = new ArrayList<>();
@@ -27,11 +30,31 @@ public class TaskLauncherBuilder {
         return this;
     }
 
+    public TaskLauncherBuilder withGradient(Color colorOne, Color colorTwo) {
+        this.colorOne = colorOne;
+        this.colorTwo = colorTwo;
+        return this;
+    }
+
+    public TaskLauncherBuilder withBackground(Color color) {
+        this.colorOne = color;
+        this.colorTwo = color;
+        return this;
+    }
+
     public GuiTaskLauncher build() {
        return new GuiTaskLauncher(this);
     }
 
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    public Color getColorOne() {
+        return colorOne;
+    }
+
+    public Color getColorTwo() {
+        return colorTwo;
     }
 }

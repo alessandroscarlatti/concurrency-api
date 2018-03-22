@@ -24,9 +24,13 @@ public class GuiTaskLauncher {
     protected List<Task> tasks;
     protected LauncherFrame frame;
     protected CountDownLatch latch;
+    protected Color colorOne;
+    protected Color colorTwo;
 
     GuiTaskLauncher(TaskLauncherBuilder builder) {
         tasks = builder.getTasks();
+        colorOne = builder.getColorOne() != null ? builder.getColorOne() : Color.BLACK;
+        colorTwo = builder.getColorTwo() != null ? builder.getColorTwo() : Color.BLUE;
     }
 
     public static TaskLauncherBuilder gui() {
@@ -53,7 +57,7 @@ public class GuiTaskLauncher {
         try {
             EventQueue.invokeAndWait(() -> {
                 try {
-                    frame.setVisible(true);
+                    showFrame();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -67,6 +71,10 @@ public class GuiTaskLauncher {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void showFrame() {
+        frame.setVisible(true);
     }
 
     protected void addTasks() {
@@ -83,6 +91,7 @@ public class GuiTaskLauncher {
         LauncherFrame frame = new LauncherFrame(getTitle());
         frame.buildContent();
         frame.setIcon();
+        frame.setColors(colorOne, colorTwo);
 
         return frame;
     }
@@ -95,19 +104,23 @@ public class GuiTaskLauncher {
         private LauncherFrame(String title) {
             super(title);
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            setBounds(100, 100, 335, 153);
-            JPanel contentPane = new JPanel();
+            JPanel contentPane = new GradientPanel(GradientPanel.DIAGONAL_RIGHT);
             contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
             setContentPane(contentPane);
             contentPane.setLayout(new BorderLayout(0, 0));
         }
 
+        protected void setColors(Color colorOne, Color colorTwo) {
+            getContentPane().setBackground(colorOne);
+            getContentPane().setForeground(colorTwo);
+        }
+
         protected void buildContent() {
-            {
-                tasksPanel = new JPanel();
-                getContentPane().add(tasksPanel, BorderLayout.CENTER);
-                tasksPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-            }
+            tasksPanel = new JPanel();
+            tasksPanel.setOpaque(false);
+            getContentPane().add(tasksPanel, BorderLayout.CENTER);
+            tasksPanel.setLayout(new WrapLayout(FlowLayout.CENTER, 5, 5));
+            tasksPanel.setMaximumSize(new Dimension(400, Integer.MAX_VALUE));
         }
 
         protected void setIcon() {
@@ -124,6 +137,7 @@ public class GuiTaskLauncher {
 
         protected void addTask(Task task) {
             JButton button = new JButton(task.getName());
+            button.setOpaque(false);
             tasksPanel.add(button);
 
             button.addActionListener((ActionEvent event) -> {
@@ -139,6 +153,7 @@ public class GuiTaskLauncher {
             }
 
             button.setIcon(new ImageIcon(buttonImage));
+            pack();
         }
 
         protected void runTask(Task task) {

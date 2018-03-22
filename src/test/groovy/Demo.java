@@ -1,7 +1,7 @@
-import com.scarlatti.App;
-import com.scarlatti.GreetingService;
 import com.scarlatti.taskLauncher.GuiTaskLauncher;
 import org.junit.Test;
+
+import java.awt.*;
 
 /**
  * ______    __                         __           ____             __     __  __  _
@@ -11,11 +11,6 @@ import org.junit.Test;
  * Saturday, 2/24/2018
  */
 public class Demo {
-
-    @Test
-    public void runApp() {
-        App.main();
-    }
 
     /**
      * We want to be able to simply call the function
@@ -42,6 +37,7 @@ public class Demo {
             .withTask("Do Something", this::doSomething)
             .withTask("Do Something", this::doSomething)
             .withTask("Do Something", this::doSomething)
+            .withGradient(Color.decode("#e3e3e3"), Color.decode("#343434"))
             .build().show();
     }
 
