@@ -1,3 +1,5 @@
+package com.scarlatti.taskLauncher;
+
 /**
  * ______    __                         __           ____             __     __  __  _
  * ___/ _ | / /__ ___ ___ ___ ____  ___/ /______    / __/______ _____/ /__ _/ /_/ /_(_)
@@ -7,6 +9,15 @@
  */
 public class GreetingService {
 
+    private long sleepMs = 5000;
+
+    public GreetingService() {
+    }
+
+    public GreetingService(long sleepMs) {
+        this.sleepMs = sleepMs;
+    }
+
     /**
      * This is a function that would take awhile
      * @param name
@@ -14,12 +25,23 @@ public class GreetingService {
      */
     public String greet(String name) {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(sleepMs);
 
             // TODO throw an exception sometimes...
-            return "hello, " + name;
+
+            throw new RuntimeException("what!");
+
+//            return "hello, " + name;
         } catch (InterruptedException e) {
             throw new RuntimeException();
         }
+    }
+
+    public long getSleepMs() {
+        return sleepMs;
+    }
+
+    public void setSleepMs(long sleepMs) {
+        this.sleepMs = sleepMs;
     }
 }

@@ -126,8 +126,8 @@ public class GuiTaskLauncher {
         protected void setIcon() {
             try {
                 List<Image> icons = new ArrayList<>();
-                icons.add(ImageIO.read(this.getClass().getResource("/com.scarlatti.taskLauncher/go32.png")));
-                icons.add(ImageIO.read(this.getClass().getResource("/com.scarlatti.taskLauncher/go48.png")));
+                icons.add(ImageIO.read(this.getClass().getResource("/go32.png")));
+                icons.add(ImageIO.read(this.getClass().getResource("/go48.png")));
 
                 setIconImages(icons);
             } catch (Exception e) {
@@ -146,7 +146,7 @@ public class GuiTaskLauncher {
 
             if (buttonImage == null) {
                 try {
-                    buttonImage = ImageIO.read(this.getClass().getResource("/com.scarlatti.taskLauncher/go32.png"));
+                    buttonImage = ImageIO.read(this.getClass().getResource("/go32.png"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

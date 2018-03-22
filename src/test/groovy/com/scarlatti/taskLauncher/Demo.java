@@ -1,7 +1,6 @@
-import com.scarlatti.taskLauncher.GuiTaskLauncher;
-import org.junit.Test;
+package com.scarlatti.taskLauncher;
 
-import java.awt.*;
+import org.junit.Test;
 
 /**
  * ______    __                         __           ____             __     __  __  _

@@ -1,4 +1,5 @@
-import com.scarlatti.taskLauncher.GuiTaskLauncher;
+package com.scarlatti.taskLauncher;
+
 import org.junit.Test;
 
 /**
