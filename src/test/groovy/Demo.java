@@ -37,7 +37,6 @@ public class Demo {
             .withTask("Do Something", this::doSomething)
             .withTask("Do Something", this::doSomething)
             .withTask("Do Something", this::doSomething)
-            .withGradient(Color.decode("#e3e3e3"), Color.decode("#343434"))
             .build().show();
     }
 

@@ -29,8 +29,8 @@ public class GuiTaskLauncher {
 
     GuiTaskLauncher(TaskLauncherBuilder builder) {
         tasks = builder.getTasks();
-        colorOne = builder.getColorOne() != null ? builder.getColorOne() : Color.BLACK;
-        colorTwo = builder.getColorTwo() != null ? builder.getColorTwo() : Color.BLUE;
+        colorOne = builder.getColorOne() != null ? builder.getColorOne() : Color.decode("#e3e3e3");
+        colorTwo = builder.getColorTwo() != null ? builder.getColorTwo() : Color.decode("#343434");
     }
 
     public static TaskLauncherBuilder gui() {
