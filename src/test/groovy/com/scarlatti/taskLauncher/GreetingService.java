@@ -26,12 +26,7 @@ public class GreetingService {
     public String greet(String name) {
         try {
             Thread.sleep(sleepMs);
-
-            // TODO throw an exception sometimes...
-
-            throw new RuntimeException("what!");
-
-//            return "hello, " + name;
+            return "hello, " + name;
         } catch (InterruptedException e) {
             throw new RuntimeException();
         }
